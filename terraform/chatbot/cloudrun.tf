@@ -9,7 +9,10 @@ resource "google_cloud_run_v2_service" "chatbot_service" {
   }
 
   lifecycle {
-    ignore_changes = [template[0].containers[0].image]
+    ignore_changes = [
+      template,
+      traffic,
+    ]
   }
 
   template {

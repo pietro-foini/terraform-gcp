@@ -19,6 +19,7 @@ resource "google_cloudbuild_trigger" "trigger_ml_chatbot" {
     _EMBEDDINGS_MODEL : var.embeddings_model
     _EMBEDDINGS_SIZE : var.embeddings_size
     _DB_NAME : var.db_name
+    _INSTANCE_NAME : data.google_sql_database_instance.postgres.name
   }
 
   service_account = data.google_service_account.builder.id
