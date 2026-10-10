@@ -23,7 +23,7 @@ resource "google_cloudbuild_trigger" "trigger_ml_chatbot" {
   }
 
   service_account = data.google_service_account.builder.id
-  filename        = "cloudbuild.yaml"
+  filename        = "cloud/gcp/cloudbuild.yaml"
 }
 
 
