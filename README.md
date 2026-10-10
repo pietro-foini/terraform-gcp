@@ -152,3 +152,40 @@ applying steps.
 Terraform will automatically fall back to the default `local` backend. If you run terraform apply, it will store the state
 locally in a file named `terraform.tfstate` inside the current folder (make sure `.tfstate` files are included in your 
 `.gitignore` so they are not committed to Git).
+
+
+### CI/CD Deployment with Cloud Build
+
+As an alternative to running Terraform commands locally, you can automate planning and applying via **Google Cloud Build**.
+
+#### Grant IAM Permissions to Cloud Build
+
+Before running the builds, make sure the **Cloud Resource Manager API** is enabled in your project (required by Terraform 
+to manage project-level IAM bindings and resources):
+
+Then, ensure the Service Account running Cloud Build (the default Cloud Build SA, Compute Engine SA, or a custom one) has 
+the following IAM roles assigned:
+
+- Editor (roles/editor) — grants general permissions to manage infrastructure resources and access the Terraform state bucket.
+- Developer Connect Read Token Accessor (roles/developerconnect.readTokenAccessor) — required to fetch GitHub credentials 
+via Developer Connect and clone the repository.
+- Service Usage Admin (roles/serviceusage.serviceUsageAdmin) — allows managing and querying service configurations and APIs.
+
+#### Configure Cloud Build Triggers (Manual Setup)
+
+Create the build triggers to execute your `cloudbuild.yaml`:
+
+1. Navigate to **Cloud Build > Triggers** in the GCP Console.
+2. Click **Create Trigger**:
+   - **Name**: e.g., `terraform-common` or `terraform-chatbot`.
+   - **Event**: Choose your trigger event (e.g., *Push to branch* on `master`, or *Manual invocation*).
+   - **Source**: Select the repository connected via **Developer Connect** (from Step 1).
+   - **Configuration**: Select **Cloud Build configuration file**.
+   - **Location**: Specify the path to your config file (e.g., `/cloudbuild.yaml`). 
+   - **Substitution variables**: Add any required environment-specific variable `_MODALITY`.
+3. Click **Create**.
+
+Once configured, pushes to the designated branch (or manual executions via the Console/CLI) will automatically 
+initialize and run Terraform in a consistent, containerized GCP environment.
+
+> **Note:** Run `common` before `chatbot`.
