@@ -1,0 +1,44 @@
+steps:
+  - id: 'tf-init'
+    name: 'hashicorp/terraform:1.16.5'
+    dir: 'terraform/${_MODALITY}'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform init \
+          -backend-config="bucket=${PROJECT_ID}-tf-state" \
+          -backend-config="prefix=environments/${PROJECT_ID}/${_MODALITY}"
+
+  - id: 'tf-validate'
+    name: 'hashicorp/terraform:1.16.5'
+    dir: 'terraform/${_MODALITY}'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - 'terraform validate'
+
+  - id: 'tf-plan'
+    name: 'hashicorp/terraform:1.16.5'
+    dir: 'terraform/${_MODALITY}'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform plan \
+          -input=false \
+          -out=tfplan \
+          -var-file="/workspace/environments/${PROJECT_ID}/${_MODALITY}.tfvars" \
+          -compact-warnings
+
+  - id: 'tf-apply'
+    name: 'hashicorp/terraform:1.16.5'
+    dir: 'terraform/${_MODALITY}'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - 'terraform apply -input=false tfplan'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  substitution_option: 'MUST_MATCH'
