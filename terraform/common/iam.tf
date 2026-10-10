@@ -1,7 +1,7 @@
 module "service_accounts" {
-  source        = "terraform-google-modules/service-accounts/google"
-  version       = "5.1.0"
-  project_id    = var.project_id
+  source     = "terraform-google-modules/service-accounts/google"
+  version    = "5.1.0"
+  project_id = var.project_id
   prefix     = "app"
   names      = ["builder"]
 

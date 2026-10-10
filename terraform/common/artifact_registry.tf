@@ -5,7 +5,7 @@ resource "google_artifact_registry_repository" "ml_servers" {
   format        = "DOCKER"
 
   labels = {
-    team          = "ml"
+    team = "ml"
   }
 
   vulnerability_scanning_config {

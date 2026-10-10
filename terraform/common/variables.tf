@@ -4,11 +4,11 @@ variable "project_id" {
 }
 
 variable "region" {
-  type    = string
+  type        = string
   description = "The region of the Google Cloud Platform project"
 }
 
 variable "postgres_user" {
-  type    = string
+  type        = string
   description = "The name of the user for PostgreSQL database"
 }
