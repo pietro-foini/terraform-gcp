@@ -39,6 +39,7 @@ steps:
       - '-c'
       - 'terraform apply -input=false tfplan'
 
+serviceAccount: 'projects/$PROJECT_ID/serviceAccounts/$SERVICE_ACCOUNT'
 options:
   logging: CLOUD_LOGGING_ONLY
   substitution_option: 'MUST_MATCH'
