@@ -1,4 +1,4 @@
-resource "google_artifact_registry_repository" "ml-servers" {
+resource "google_artifact_registry_repository" "ml_servers" {
   location      = var.region
   repository_id = "ml-servers"
   description   = "Docker package repository"
