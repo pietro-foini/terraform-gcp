@@ -81,8 +81,8 @@ Navigate to directory:
 Initialize with remote backend:
 
     terraform init `
-      -backend-config="bucket=foini-506814-chatbot" `
-      -backend-config="prefix=environments/foini/common" `
+      -backend-config="bucket=foini-506814-tf-state" `
+      -backend-config="prefix=environments/foini-506814/common" `
       -migrate-state
 
 Validate configuration:
@@ -91,11 +91,11 @@ Validate configuration:
 
 Run plan:
 
-    terraform plan -var-file="../../environments/foini/common.tfvars"
+    terraform plan -var-file="../../environments/foini-506814/common.tfvars"
 
 Apply changes:
 
-    terraform apply -var-file="../../environments/foini/common.tfvars"
+    terraform apply -var-file="../../environments/foini-506814/common.tfvars"
 
 #### Deploy `chatbot`
 
@@ -106,8 +106,8 @@ Navigate to directory:
 Initialize remote backend:
 
     terraform init `
-      -backend-config="bucket=foini-506814-chatbot" `
-      -backend-config="prefix=environments/foini/chatbot" `
+      -backend-config="bucket=foini-506814-tf-state" `
+      -backend-config="prefix=environments/foini-506814/chatbot" `
       -migrate-state
 
 Validate configuration:
@@ -116,11 +116,11 @@ Validate configuration:
 
 Run plan:
 
-    terraform plan -var-file="../../environments/foini/chatbot.tfvars"
+    terraform plan -var-file="../../environments/foini-506814/chatbot.tfvars"
 
 Apply changes:
 
-    terraform apply -var-file="../../environments/foini/chatbot.tfvars"
+    terraform apply -var-file="../../environments/foini-506814/chatbot.tfvars"
 
 ### Step 3: Post-Deployment Steps (Manual)
 
