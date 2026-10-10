@@ -57,7 +57,7 @@ Before running Terraform with remote state, complete these initial manual steps:
     (It is strongly recommended to enable object versioning on this bucket).
     
     In my case, I have `<YOUR-PROJECT-ID>=foini-506814` and `<YOUR-REGION>=europe-west1`; and I set 
-    `<YOUR-TFSTATE-BUCKET-NAME>=foini-506814-chatbot`.
+    `<YOUR-TFSTATE-BUCKET-NAME>=foini-506814-tf-state`.
     
     Or create the bucket through GCP Console.
 
