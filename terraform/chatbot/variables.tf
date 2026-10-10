@@ -20,8 +20,7 @@ variable "git_repository_link_id" {
 
 variable "cookie_secure" {
   description = "Cookie secure configuration flag or reference"
-  type        = string
-  default     = "false"
+  type        = bool
 }
 
 variable "llm_model" {
