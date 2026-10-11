@@ -17,7 +17,6 @@ resource "google_cloudbuild_trigger" "trigger_ml_chatbot" {
     _COOKIE_SECURE : var.cookie_secure
     _LLM_MODEL : var.llm_model
     _EMBEDDINGS_MODEL : var.embeddings_model
-    _EMBEDDINGS_SIZE : var.embeddings_size
     _DB_NAME : var.db_name
     _INSTANCE_CONNECTION_NAME : data.google_sql_database_instance.postgres.connection_name
   }

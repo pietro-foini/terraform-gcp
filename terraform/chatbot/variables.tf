@@ -35,12 +35,6 @@ variable "embeddings_model" {
   default     = "models/gemini-embedding-001"
 }
 
-variable "embeddings_size" {
-  description = "Vector dimension size for the text embeddings"
-  type        = number
-  default     = 1024
-}
-
 variable "db_name" {
   description = "Database name for the chatbot service"
   type        = string
