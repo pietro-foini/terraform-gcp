@@ -187,5 +187,5 @@ initialize and run Terraform in a consistent, containerized GCP environment.
 
 If you want to delete all the resources created:
 
-    terraform destroy -var-file="../../environments/chatbot/chatbot.tfvars"
-    terraform destroy -var-file="../../environments/chatbot/common.tfvars"
+    terraform destroy -var-file="../../environments/foini-506814/chatbot.tfvars"
+    terraform destroy -var-file="../../environments/foini-506814/common.tfvars"
