@@ -182,3 +182,10 @@ Once configured, pushes to the designated branch (or manual executions via the C
 initialize and run Terraform in a consistent, containerized GCP environment.
 
 > **Note:** Run `common` before `chatbot`.
+
+---
+
+If you want to delete all the resources created:
+
+    terraform destroy -var-file="../../environments/chatbot/chatbot.tfvars"
+    terraform destroy -var-file="../../environments/chatbot/common.tfvars"
