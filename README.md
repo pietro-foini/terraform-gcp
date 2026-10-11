@@ -132,13 +132,6 @@ Once the infrastructure resources are provisioned by Terraform:
   - Run the following SQL statement:
 
     > CREATE EXTENSION IF NOT EXISTS vector;
-  
-- Set Secret Values: Terraform creates the secret containers in Secret Manager (secrets.tf). Add the real secret 
-payload/value manually:
-
-  - Go to Secret Manager in the GCP Console.
-  - Select the created secret (`auth_key`).
-  - Click Add new version and paste the actual secret key.
 
 ---
 
